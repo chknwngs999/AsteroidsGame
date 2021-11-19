@@ -1,10 +1,18 @@
-//your variable declarations here
+Spaceship bob;
+Star [] shiny;
+
+boolean accelerate = false;
+boolean decelerate = false;
+boolean leftturn = false;
+boolean rightturn = false;
+boolean braking = false;
+
 public void setup() 
 {
-  //your code here
+  size(500, 500);
+  bob = new Spaceship();
+  shiny = new Star[200];
+  for (int i = 0; i < shiny.length; i++){
+    shiny[i] = new Star();
+  }
 }
-public void draw() 
-{
-  //your code here
-}
-
