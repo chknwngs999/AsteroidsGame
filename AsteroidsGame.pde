@@ -72,4 +72,7 @@ public void keyReleased()
   if (keyCode == 32){
     braking = false;
   }
+  if (keyCode == SHIFT){
+    bob.hyperspace();
+  }
 }
