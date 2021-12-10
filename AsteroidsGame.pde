@@ -183,7 +183,8 @@ public void keyReleased()
         shots.add(new Bullet(fleet.get(i)));
       }
       bullets -= 1;
-    } else if (bullets == 0) {
+    }
+    if (bullets == 0) {
       bullets = 10;
       reloadticks = 250;
     }
