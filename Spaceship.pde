@@ -11,48 +11,37 @@ class Spaceship extends Floater
     myYspeed = 0;
     myPointDirection = 0;
   }
-  public void brake () {
-    
-    if (myXspeed > 0){
-      if (myXspeed > 15){
-        myXspeed *= 0.75;
-      } else if (myXspeed > 5){
-        myXspeed *= 0.85;
-      } else {
-        myXspeed = 0;
-      }
-    } else {
-      if (myXspeed < -15){
-        myXspeed *= 0.75;
-      } else if (myXspeed < -5){
-        myXspeed *= 0.85;
-      } else {
-        myXspeed = 0;
-      }
-    }
-   if (myYspeed > 0){
-      if (myYspeed > 15){
-        myYspeed *= 0.75;
-      } else if (myYspeed > 5){
-        myYspeed *= 0.85;
-      } else {
-        myYspeed = 0;
-      }
-   } else {
-     if (myYspeed < -15){
-        myYspeed *= 0.75;
-      } else if (myYspeed < -5){
-        myYspeed *= 0.85;
-      } else {
-        myYspeed = 0;
-      }
-   }
-  }
-  public void hyperspace(){
+  Spaceship(int centerX, int centerY) {
+    corners = 8;
+    xCorners = new int[]{16, 0, 0, -10, -4, -10, 0, 0};
+    yCorners = new int[]{0, 7, 4, 10, 0, -10, -4, -7};
+    myColor = color(255, 0, 0);
+    myCenterX = centerX;
+    myCenterY = centerY;
     myXspeed = 0;
     myYspeed = 0;
-    myCenterX = (int)(Math.random()*width);
-    myCenterY = (int)(Math.random()*height);
-    myPointDirection = (int)(Math.random()*360);
+    myPointDirection = 0;
+  }
+  public void hyperspace(int centerX, int centerY, int newPoint){
+    myXspeed = 0;
+    myYspeed = 0;
+    myCenterX = centerX;
+    myCenterY = centerY;
+    myPointDirection = newPoint;
+  }
+  public double getX(){
+    return myCenterX;
+  }
+  public double getY(){
+    return myCenterY;
+  }
+  public double getXspeed(){
+    return myXspeed;
+  }
+  public double getYspeed(){
+    return myYspeed;
+  }
+  public double getPointDirection(){
+    return myPointDirection;
   }
 }
