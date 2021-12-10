@@ -1,10 +1,3 @@
-//add wasd support
-//worry about asteroid shape later
-//bullet collision with ships?
-//points display
-//reload
-
-//Spaceship bob;
 Star [] shiny;
 ArrayList <Spaceship> fleet;
 ArrayList <Asteroid> asteroids;
@@ -25,7 +18,6 @@ boolean braking = false;
 public void setup()     
 {
   size(900, 900);
-  //bob = new Spaceship();
   shiny = new Star[200];
   for (int i = 0; i < shiny.length; i++) {
     shiny[i] = new Star();
@@ -54,32 +46,25 @@ public void draw()
     shiny[i].show();
   }
   if (accelerate) {
-    //bob.accelerate(0.1);
     for (int i = 0; i < fleet.size(); i++) {
       fleet.get(i).accelerate(0.1);
     }
   }
   if (decelerate) {
-    //bob.accelerate(-0.1);
     for (int i = 0; i < fleet.size(); i++) {
       fleet.get(i).accelerate(-0.1);
     }
   }
   if (leftturn) {
-    //bob.turn(-3);
     for (int i = 0; i < fleet.size(); i++) {
       fleet.get(i).turn(-3);
     }
   }
   if (rightturn) {
-    //bob.turn(3);
     for (int i = 0; i < fleet.size(); i++) {
       fleet.get(i).turn(3);
     }
   }
-
-  //bob.move();
-  //bob.show();
 
   for (int i = fleet.size()-1; i >= 0; i--) {
     if (fleet.size() == 0) {
@@ -90,7 +75,7 @@ public void draw()
     for (int j = asteroids.size()-1; j >= 0; j--) {
       float d = dist((float)fleet.get(i).getX(), (float)fleet.get(i).getY(), (float)asteroids.get(j).getX(), (float)asteroids.get(j).getY());
       if (d < 20) {
-        //error when 0 ships
+        //error when 0 ships?
         asteroids.remove(j);
         fleet.remove(i);
         asteroids.add(new Asteroid());
@@ -126,7 +111,7 @@ public void draw()
       }
     }
   }
-  //arraylist trap
+  //arraylist trap?
   if (asteroids.size() == 0) {
     waves++;
     points += 3;
@@ -141,7 +126,6 @@ public void draw()
   }
   fill(255);
   text("Points: " + points, 25, 25);
-  //count fleets/waves destroyed
   text(reloadticks + " until " + bullets + " can be fired", 25, 50);
   text("Asteroids until next wave: " + asteroids.size(), 275, 25);
   text("Ships in fleet: " + fleet.size(), 275, 50);
@@ -152,29 +136,31 @@ public void draw()
 
 public void keyPressed()
 {
-  if (keyCode == LEFT) {
+  if (keyCode == LEFT || key == 'a') {
     leftturn = true;
   }
-  if (keyCode == RIGHT) {
+  if (keyCode == RIGHT || key == 'd') {
     rightturn = true;
   }
-  if (keyCode == UP) {
+  if (keyCode == UP || key == 'w') {
     accelerate = true;
   }
-  if (keyCode == DOWN) {
+  if (keyCode == DOWN || key == 's') {
     decelerate = true;
   }
 }
 public void keyReleased()
 {
-  if (keyCode == LEFT) {
+  if (keyCode == LEFT || key == 'a') {
     leftturn = false;
-  } else if (keyCode == RIGHT) {
+  } 
+  if (keyCode == RIGHT || key == 'd') {
     rightturn = false;
   }
-  if (keyCode == UP) {
+  if (keyCode == UP || key == 'w') {
     accelerate = false;
-  } else if (keyCode ==   DOWN) {
+  } 
+  if (keyCode == DOWN || key == 's') {
     decelerate = false;
   }
   if (keyCode == 32) {
